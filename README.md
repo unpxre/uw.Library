@@ -1,4 +1,3 @@
-/*
  * uw.Library
  * Version 1.1 (25/10/2014)
  * Copyright 2014 Kajetan Hryńczuk and Damian Sobkowiak.  
@@ -8,7 +7,6 @@
  *
  * Author: Kajetan Hryńczuk and Damian Sobkowiak
  * Project: https://github.com/unpxre/uw.Library
- */
 
 uw.css
 ======
