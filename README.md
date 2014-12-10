@@ -7,6 +7,7 @@
  *
  * Author: Kajetan Hryńczuk and Damian Sobkowiak
  * Project: https://github.com/unpxre/uw.Library
+ * Manual: http://unpxre.pl/uw/
 
 uw.css
 ======
