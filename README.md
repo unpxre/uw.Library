@@ -1,5 +1,5 @@
  * uw.Library
- * Version 1.1 (25/10/2014)
+ * Version 1.1.2 (19/12/2014)
  * Copyright 2014 Kajetan Hryńczuk and Damian Sobkowiak.  
  * All Rights Reserved.  
  * Use, reproduction, distribution, and modification of this code is subject to the terms and 
