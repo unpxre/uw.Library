@@ -1,6 +1,6 @@
 /*
  * uw.Library
- * Version 1.1.1 (19/12/2014)
+ * Version 1.1.2 (19/12/2014)
  * Copyright 2014 Kajetan Hryńczuk and Damian Sobkowiak.  
  * All Rights Reserved.  
  * Use, reproduction, distribution, and modification of this code is subject to the terms and 
@@ -109,36 +109,44 @@ $(document).keydown(function(e)
 //funkcja pokazujaca zdj
 function uw_photo_show(src, index)
 {
-	//ukrycie ladowarki
-	$('#uw_photo_curtain i').addClass('dn');
-	
-	//dodanie opisu zdj
-	$('#uw_photo_box h3').text('');
-	$('#uw_photo_box h3').text($('.uw_photo_index_'+index).attr('alt'));
-	
-	//dodanie oblusgi strzalek
-	$('.uw_fillpath .prev').attr('href', $('.uw_photo_index_'+ (index-1) ).parent().attr('href'));
-	$('.uw_fillpath .next').attr('href', $('.uw_photo_index_'+ (index+1) ).parent().attr('href'));
-	if( ($('.uw_fillpath .next').attr('href').indexOf("ascript:uw_photo(\"undefined")>0 ) || ($('.uw_fillpath .next').attr('href')=="") ) $('.uw_fillpath .next').attr('href', 'javascript:;');
-	if( ($('.uw_fillpath .prev').attr('href').indexOf("ascript:uw_photo(\"undefined")>0 ) || ($('.uw_fillpath .prev').attr('href')=="") ) $('.uw_fillpath .next').attr('prev', 'javascript:;');
-	
-	//oblsuga ikonki do otworzenia w nowym oknie
-	$('#uw_max_photo').parent().attr('href', src);
-	
-	//pobranie wielkosci ogrinalu (HTML5) i rozmiaru okna
-	var h=document.querySelector('#uw_photo_box img').naturalHeight;
-	var w=document.querySelector('#uw_photo_box img').naturalWidth;
-	var x=parseInt($( window ).width()*0.9);
-	var y=parseInt($( window ).height()-80);
-	//zmiejsznie wartosci jesli sa wieksze niz okno
-	while ( (h>y) || (w>x) )  { h=parseInt(h*0.9); w=parseInt(w*0.9); }
-	
-	//wycentrowanie zdjecia
-	$('#uw_photo_box').animate({'marginTop': ('-'+parseInt(h/2+25))+'px'}, { duration: 300, queue: false }).animate({'marginLeft': ('-'+parseInt(w/2+10))+'px'}, { duration: 300, queue: false }).animate({'width': (w+20)+'px'}, { duration: 300, queue: false }).animate({'height': (h+50)+'px'}, { duration: 300, queue: false });
-	$('#uw_photo_box img').animate({'width': w+'px'}, { duration: 300, queue: false }).animate({'height': h+'px'}, { duration: 300, queue: false });
-	
-	//pokazanie zdjecia
-	if($('#uw_photo_box, #uw_photo_curtain').hasClass('dn')) $('#uw_photo_box').css('opacity', '0').removeClass('dn').animate({'opacity': '1'}, 500);
+		//$('#uw_photo_box img').css('opacity', 0); //ukrycie zdj na czas animacji rozmiaru
+		
+		//ukrycie ladowarki
+		$('#uw_photo_curtain i').addClass('dn');
+		
+		//dodanie opisu zdj
+		$('#uw_photo_box h3').text('');
+		$('#uw_photo_box h3').text($('.uw_photo_index_'+index).attr('alt'));
+		
+		//dodanie oblusgi strzalek
+		$('.uw_fillpath .prev').attr('href', $('.uw_photo_index_'+ (index-1) ).parent().attr('href'));
+		$('.uw_fillpath .next').attr('href', $('.uw_photo_index_'+ (index+1) ).parent().attr('href'));
+		if( ($('.uw_fillpath .next').attr('href').indexOf("ascript:uw_photo(\"undefined")>0 ) || ($('.uw_fillpath .next').attr('href')=="") ) $('.uw_fillpath .next').attr('href', 'javascript:;');
+		if( ($('.uw_fillpath .prev').attr('href').indexOf("ascript:uw_photo(\"undefined")>0 ) || ($('.uw_fillpath .prev').attr('href')=="") ) $('.uw_fillpath .next').attr('prev', 'javascript:;');
+		
+		//oblsuga ikonki do otworzenia w nowym oknie
+		$('#uw_max_photo').parent().attr('href', src);
+		
+		//pobranie wielkosci ogrinalu (HTML5) i rozmiaru okna
+		var h=document.querySelector('#uw_photo_box img').naturalHeight;
+		var w=document.querySelector('#uw_photo_box img').naturalWidth;
+		var x=parseInt($( window ).width()*0.9);
+		var y=parseInt($( window ).height()-80);
+		//zmiejsznie wartosci jesli sa wieksze niz okno
+		while ( (h>y) || (w>x) )  { h=parseInt(h*0.9); w=parseInt(w*0.9); }
+		
+		
+		//wycentrowanie zdjecia
+		//$('#uw_photo_box img').animate({'width': w+'px', 'height': h+'px'}, { duration: 300, queue: false }); //zastapione CSSEM
+		$('#uw_photo_box').animate({'marginTop': ('-'+parseInt(h/2+25))+'px', 'marginLeft': ('-'+parseInt(w/2+10))+'px', 'width': (w+20)+'px', 'height': (h+50)+'px'}, { duration: 300, queue: false });
+			
+
+		
+		//pokazanie zdjecia
+		if($('#uw_photo_box, #uw_photo_curtain').hasClass('dn')) $('#uw_photo_box').css('opacity', '0').removeClass('dn').animate({'opacity': '1'}, 500);
+
+		
+		//setTimeout(function() { $('#uw_photo_box img').css('opacity', 1); }, 300 ); //odkrycie zdj po czasie animacji rozmiaru
 
 }
 
